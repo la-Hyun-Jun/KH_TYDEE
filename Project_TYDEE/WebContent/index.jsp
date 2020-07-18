@@ -10,6 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	index controller
     Hello World!!
     Git test!!
 </body>
