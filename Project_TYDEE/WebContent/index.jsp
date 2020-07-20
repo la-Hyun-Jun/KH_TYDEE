@@ -1,13 +1,7 @@
-<<<<<<< Updated upstream
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<% request.setCharacterEncoding("UTF-8"); %>
-<% response.setContentType("text/html; charset=UTF-8"); %>
-
-=======
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
->>>>>>> Stashed changes
+<% request.setCharacterEncoding("UTF-8"); %>
+<% response.setContentType("text/html; charset=UTF-8"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +9,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	index controller
+    Hello World!!
+    Git test!!
+    test 2 !!
+    Yaho!
 </body>
 </html>
