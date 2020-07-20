@@ -9,10 +9,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	index controller
-    Hello World!!
-    Git test!!
-    test 2 !!
-    Yaho!
+
 </body>
 </html>
