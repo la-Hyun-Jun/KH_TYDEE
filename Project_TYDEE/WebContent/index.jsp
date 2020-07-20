@@ -13,5 +13,6 @@
 	index controller
     Hello World!!
     Git test!!
+    Yaho!
 </body>
 </html>
