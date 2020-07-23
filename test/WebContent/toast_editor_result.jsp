@@ -11,12 +11,13 @@
 </head>
 
 <body>
-    <% 
-    String textinput = request.getParameter("example");
-    String toast = request.getParameter("toastContent");
+<% 
+	String title = request.getParameter("title");
+    String content = request.getParameter("content");
 %>
-    <h1><%=textinput %></h1>
-    <%=toast %>
+    <h1><%=title %></h1>
+    <%=content %>
+    <input type="button" value="뒤로가기" onclick="location.href='toast_editor.jsp'" />
 </body>
 
 </html>
