@@ -20,7 +20,7 @@
 </head>
 
 <body>
-    <!-- <form action="toast_editor_result.jsp" method="POST"> -->
+<!--     <form action="toast_editor_result.jsp" method="POST"> -->
     <form action="toast.do?command=write" method="POST">
     	<input type="text" name="title" />
         <div id="editor" name="content"></div>
@@ -51,14 +51,14 @@
                 'outdent'
             ]
         });
-        editor.getHtml();
+        editor.getMarkdown();
 
         function contentHidden() {
             let form = document.getElementsByTagName("form")[0];
             let input = document.createElement("input");
             input.setAttribute("type", "hidden");
             input.setAttribute("name", "content")
-            input.setAttribute("value", editor.getHtml());
+            input.setAttribute("value", editor.getMarkdown());
             document.querySelector("#editor").append(input);
         }
     </script>

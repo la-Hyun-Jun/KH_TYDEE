@@ -7,7 +7,7 @@
 	</select>
 	<select id="selectOne" parameterType="int" resultType="toastDto">
 		SELECT SEQ, TITLE, CONTENT, REGDATE
-		FROM TAOSTTABLE
+		FROM TOASTTABLE
 		WHERE SEQ = #{seq}
 	</select>
 	<insert id="insert" parameterType="toastDto">

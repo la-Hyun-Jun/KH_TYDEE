@@ -27,6 +27,7 @@
         <div id="editorSection"></div>
         <input type="submit" id="editorSubmit" />
         <input type="button" id="clickTest" value="hidden?" />
+        <input type="button" value="뒤로가기" onclick="location.href='index.jsp'" />
     </form>
     <script>
         let editorSection = document.querySelector("#editorSection");
