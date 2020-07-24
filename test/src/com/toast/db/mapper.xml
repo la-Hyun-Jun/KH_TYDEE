@@ -4,6 +4,7 @@
 	<select id="selectList" resultType="toastDto">
 		SELECT SEQ, TITLE, CONTENT, REGDATE
 		FROM TOASTTABLE
+		ORDER BY SEQ DESC
 	</select>
 	<select id="selectOne" parameterType="int" resultType="toastDto">
 		SELECT SEQ, TITLE, CONTENT, REGDATE
