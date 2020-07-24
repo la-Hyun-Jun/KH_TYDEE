@@ -17,6 +17,7 @@
 %>
     <h1><%=textinput %></h1>
     <%=toast %>
+    <input type="button" value="뒤로가기" onclick="location.href='toast_example.jsp'" />
 </body>
 
 </html>
