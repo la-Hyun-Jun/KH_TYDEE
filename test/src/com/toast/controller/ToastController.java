@@ -49,7 +49,7 @@ public class ToastController extends HttpServlet {
 		} else if (command.equals("detail")) {
 			int seq = Integer.parseInt(request.getParameter("seq"));
 			ToastDto dto = dao.selectOne(seq);
-			System.out.println(dto.getSeq()+"/"+dto.getTitle()+"/"+dto.getContent());
+			System.out.println(dto.getContent());
 			request.setAttribute("dto", dto);
 			dispatch("toast_editor_detail.jsp", request, response);
 		}
