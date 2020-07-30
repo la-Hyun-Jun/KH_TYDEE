@@ -53,7 +53,7 @@ const svg = d3
     .attr("viewBox", `${-width / 2} ${-height / 2} ${width} ${height}`)
     .on("click", () => focusOn()); // Reset zoom on canvas click
 
-d3.json("./json/nowloading.json").then(data => {
+	let data = mytydeejson;
     const root = d3.hierarchy(data)
         .sum(d => d.value)
         .sort((a, b) => b.value - a.value);
@@ -115,7 +115,6 @@ d3.json("./json/nowloading.json").then(data => {
         .attr("startOffset", "50%")
         .attr("xlink:href", (_, i) => `#hiddenArc${i}`)
         .text(d => d.data.name);
-});
 
 function focusOn(
     d = {

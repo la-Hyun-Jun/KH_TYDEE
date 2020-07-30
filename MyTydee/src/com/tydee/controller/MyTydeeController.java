@@ -34,7 +34,7 @@ public class MyTydeeController extends HttpServlet {
 		String command = request.getParameter("command");
 		if (command.equals("main")) {
 			String jsonobject = MyTydeeConvertToJson.convertJson(loginuser);
-			JsonWriter.makeJsonFile(jsonobject);
+			request.setAttribute("mytydeejson", jsonobject);
 			dispatch("mytydee.jsp",request,response);
 		}
 	}
