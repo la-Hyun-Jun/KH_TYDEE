@@ -56,7 +56,7 @@
             .outerRadius(d => Math.max(0, y(d.y1)));
 
         const middleArcLine = d => {
-        	const halfPi = Math.PI / 2;
+            const halfPi = Math.PI / 2;
             const angles = [x(d.x0) - halfPi, x(d.x1) - halfPi];
             const r = Math.max(0, (y(d.y0) + y(d.y1)) / 2);
 
@@ -73,7 +73,7 @@
             return path.toString();
         };
 
-         const textFits = d => {
+        const textFits = d => {
             const CHAR_SPACE = 6;
 
             const deltaAngle = x(d.x1) - x(d.x0);
@@ -93,13 +93,13 @@
         d3.json('./flare-2.json')
             .then(data => {
                 const root = d3.hierarchy(data)
-                				.sum(d => d.value)
-                				.sort((a,b) => b.value - a.value);
+                    .sum(d => d.value)
+                    .sort((a, b) => b.value - a.value);
 
                 const color = d3.scaleOrdinal().range(d3.quantize(d3.interpolateViridis, root.children.length + 1));
                 // const color = d3.scaleOrdinal().range(d3.quantize(d3.interpolateRainbow, root.children.length + 1));
                 // const color = d3.scaleOrdinal(d3.schemeSet3);
-                
+
                 const slice = svg.selectAll('g.slice')
                     .data(partition(root).descendants());
 
@@ -113,16 +113,17 @@
                     });
 
                 newSlice.append('title')
-                    .text(d => `${d.ancestors().map(d => d.data.name).reverse().join("/")}\n${formatNumber(d.value)}`);
+                    .text(d =>
+                        `${d.ancestors().map(d => d.data.name).reverse().join("/")}\n${formatNumber(d.value)}`);
 
                 newSlice.append('path')
                     .attr('class', 'main-arc')
-                    .style('fill', d => color(((d.depth > 1)? d.parent : d).data.name))
+                    .style('fill', d => color(((d.depth > 1) ? d.parent : d).data.name))
                     .attr("fill-opacity", d => (d.children ? 0.8 : 0.6))
                     .attr('d', arc);
-				
-                    // .attr("fill-opacity", d => (d.children ? 1 : 0.8))
-                    
+
+                // .attr("fill-opacity", d => (d.children ? 1 : 0.8))
+
                 newSlice.append('path')
                     .attr('class', 'hidden-arc')
                     .attr('id', (_, i) => `hiddenArc${i}`)
