@@ -21,6 +21,7 @@
 	if (loginuser == null){
 		pageContext.forward("index.jsp");
 	}
+	String mytydeejson = (String) request.getAttribute("mytydeejson");
 %>
 <body>
 	<h3><%= loginuser.getUser_nickname() %>님의 mytydee</h3>
@@ -28,6 +29,9 @@
 		<div id="mytydee"></div>
 		<div></div>
 	</section>
+	<script>
+		let mytydeejson = ${mytydeejson};
+	</script>
 	<script type="text/javascript" src="js/d3maker.js"></script>
 </body>
 </html>
