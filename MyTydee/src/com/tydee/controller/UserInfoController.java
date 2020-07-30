@@ -40,6 +40,7 @@ public class UserInfoController extends HttpServlet {
 					response.sendRedirect("error.jsp");
 				} else if (dto.getUser_role().equals("USER")) {
 					response.sendRedirect("mytydee.do?command=main");
+					System.out.println(dto.getUser_nickname()+" 접속");
 				}
 			} else {
 				jsResponse("아이디 또는 비밀번호가 틀렸거나 가입하지 않은 회원입니다.", "index.jsp", response);
