@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.tydee.dto.UserInfoDto;
-import com.tydee.utils.JsonWriter;
 import com.tydee.utils.MyTydeeConvertToJson;
 
 @WebServlet("/MyTydeeController")
