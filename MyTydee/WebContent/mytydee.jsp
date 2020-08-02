@@ -32,12 +32,13 @@ response.setHeader("Expires", "0");
 	if (loginuser == null) {
 		pageContext.forward("index.jsp");
 	}
-	String mytydeejson = (String) request.getAttribute("mytydeejson");
-	List<MyTydeeDto> options = new ArrayList<MyTydeeDto>();
-	options = (List<MyTydeeDto>) request.getAttribute("options");
 %>
 
 <body>
+	<script>
+	    let mytydeejson = ${mytydeejson};
+	    let options = ${optionArray};
+	</script>
 	<section class="tydee__mytydee">
 		<section class="tydee__mytydee__title">
 			<h1><%=loginuser.getUser_nickname()%>님의 mytydee
@@ -68,6 +69,7 @@ response.setHeader("Expires", "0");
 						</div>
 						<div class="tiny__contents">
 							<input type="hidden" name="tiny_no" />
+							<input type="hidden" name="tiny_type" />
 							<input class="tiny__content" type="text" name="type" readonly="readonly" />
 							<input class="tiny__content" type="text" name="name" readonly="readonly" />
 							<input class="tiny__content" type="text" name="location" readonly="readonly" />
@@ -79,11 +81,6 @@ response.setHeader("Expires", "0");
 			</article>
 		</section>
 	</section>
-	<script>
-        let mytydeejson = ${mytydeejson};
-        let options = ${options};
-        console.log(options);
-    </script>
 	<script type="text/javascript" src="js/d3maker.js"></script>
 </body>
 
