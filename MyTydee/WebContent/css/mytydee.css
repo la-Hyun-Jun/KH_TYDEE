@@ -67,34 +67,33 @@ li {
 .modals {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   align-items: center;
   background-color: var(--color-gray);
   padding: 40px 0;
+  width: 100%;
+  height: 100%;
 }
 
-.modal__right {
-  display: flex;
+.modal {
+  flex: 1;
   align-items: baseline;
   flex-wrap: wrap;
   flex-direction: row;
   align-items: center;
-  background-color: var(--color-gray);
   padding: 40px 0;
 }
 
-.modal__left {
-  display: flex;
-  align-items: baseline;
-  flex-wrap: wrap;
+.modal__right {
+	height: 100%;
 }
 
 .modal__wrap {
   position: relative;
   display: block;
-  width: 300px;
+  width: auto;
+  height: 100%;
   margin: 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
   border-radius: var(--size-border-radius);
   padding-bottom: 20px;
   background-color: #fff;
@@ -116,4 +115,82 @@ li {
 .modal__name {
   font-weight: var(--weight-bold);
   font-size: var(--font-regular);
+}
+
+.tiny__menu {
+	padding-right: 100px;
+	font-size: var(--font-regular);
+	font-weight: var(--weight-bold);
+}
+
+.tiny__contents {
+	display: flex;
+	flex-direction: column;
+}
+
+.tiny__content, textarea {
+  width: 230px;
+  height: 20px;
+  border: 0;
+  background-color: #efefef;
+  margin: 0;
+  padding: 8px 14px;
+  border-radius: 4px;
+  font-weight: var(--weight-regular);
+  font-size: var(--font-small);
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+
+[readonly=readonly]:focus {
+	outline: none;
+}
+
+textarea {
+	resize: none;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.dim-layer {
+  display: none;
+  position: fixed;
+  _position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+
+.dim-layer .dimBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: .5;
+  filter: alpha(opacity=50);
+}
+
+.dim-layer .pop-layer {
+  display: block;
+}
+
+a.btn-layerClose {
+  display: inline-block;
+  height: 25px;
+  padding: 0 14px 0;
+  border: 1px solid #304a8a;
+  background-color: #3f5a9d;
+  font-size: 13px;
+  color: #fff;
+  line-height: 25px;
+}
+
+a.btn-layerClose:hover {
+  border: 1px solid #091940;
+  background-color: #1f326a;
+  color: #fff;
 }

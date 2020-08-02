@@ -5,6 +5,7 @@ import java.util.Date;
 public class MyTydeeDto {
 	private int tiny_no;
 	private int user_no;
+	private String tiny_type;
 	private String tiny_title;
 	private int tiny_depth;
 	private String tiny_content;
@@ -13,6 +14,29 @@ public class MyTydeeDto {
 	private String user_nickname;
 	private int lev;
 	public MyTydeeDto() {}
+	public MyTydeeDto(int tiny_no, int user_no) {
+		this.tiny_no = tiny_no;
+		this.user_no = user_no;
+	}
+	public MyTydeeDto(int lev, int tiny_no, String tiny_title) {
+		this.lev = lev;
+		this.tiny_no = tiny_no;
+		this.tiny_title = tiny_title;
+	}
+	public MyTydeeDto(int tiny_no, int user_no, String tiny_title, String tiny_content) {
+		this.tiny_no = tiny_no;
+		this.user_no = user_no;
+		this.tiny_title = tiny_title;
+		this.tiny_content = tiny_content;
+	}
+	public MyTydeeDto (int user_no, String tiny_type, String tiny_title, int tiny_depth, String tiny_content, String tiny_image) {
+		this.user_no = user_no;
+		this.tiny_type = tiny_type;
+		this.tiny_title = tiny_title;
+		this.tiny_depth = tiny_depth;
+		this.tiny_content = tiny_content;
+		this.tiny_image = tiny_image;
+	}
 	public MyTydeeDto(int tiny_no, int user_no, String tiny_title, int tiny_depth, String tiny_content, 
 			String tiny_image, Date tiny_regdate) {
 		this.tiny_no = tiny_no;
@@ -23,10 +47,12 @@ public class MyTydeeDto {
 		this.tiny_image = tiny_image;
 		this.tiny_regdate = tiny_regdate;
 	}
-	public MyTydeeDto(int tiny_no, int user_no, String tiny_title, int tiny_depth, String tiny_content,
-			String tiny_image, Date tiny_regdate, String user_nickname, int lev) {
+	public MyTydeeDto(int tiny_no, int user_no, String tiny_type, String tiny_title, int tiny_depth,
+			String tiny_content, String tiny_image, Date tiny_regdate, String user_nickname, int lev) {
+		super();
 		this.tiny_no = tiny_no;
 		this.user_no = user_no;
+		this.tiny_type = tiny_type;
 		this.tiny_title = tiny_title;
 		this.tiny_depth = tiny_depth;
 		this.tiny_content = tiny_content;
@@ -35,6 +61,7 @@ public class MyTydeeDto {
 		this.user_nickname = user_nickname;
 		this.lev = lev;
 	}
+	
 	public int getTiny_no() {
 		return tiny_no;
 	}
@@ -46,6 +73,12 @@ public class MyTydeeDto {
 	}
 	public void setUser_no(int user_no) {
 		this.user_no = user_no;
+	}
+	public String getTiny_type() {
+		return tiny_type;
+	}
+	public void setTiny_type(String tiny_type) {
+		this.tiny_type = tiny_type;
 	}
 	public String getTiny_title() {
 		return tiny_title;
