@@ -14,11 +14,11 @@ import com.tydee.dto.MyTydeeDto;
 import com.tydee.dto.UserInfoDto;
 
 public class MyTydeeConvertToJson {
+	static MyTydeeDao mtdao = new MyTydeeDao();
     public static String convertJson(UserInfoDto loginuser) {
         int user_no = loginuser.getUser_no();
         String user_nickname = loginuser.getUser_nickname();
         Date user_regdate = loginuser.getUser_regdate();
-        MyTydeeDao mtdao = new MyTydeeDao();
         List<MyTydeeDistinctDto> levels = mtdao.selectListDistinct(user_no);
         // System.out.println("DistinctDto의 갯수: "+levels.size());
         Map<String, Object> treeMap = new HashMap<String, Object>();
@@ -81,5 +81,21 @@ public class MyTydeeConvertToJson {
             }
 
         }
+    }
+    
+    public static String makeOptions(UserInfoDto loginuser) {
+        int user_no = loginuser.getUser_no();
+    	List<MyTydeeDto> options = mtdao.selectListTypeD(user_no);
+    	List<Map<String, Object>> optionList = new ArrayList<Map<String,Object>>();
+    	for (MyTydeeDto dto : options) {
+    		Map<String,Object> option = new HashMap<String, Object>();
+    		option.put("lev", dto.getLev());
+    		option.put("tiny_title", dto.getTiny_title());
+    		option.put("tiny_no",dto.getTiny_no());
+    		optionList.add(option);
+    	}
+        Gson gson = new GsonBuilder().create();
+        String json = gson.toJson(optionList);
+    	return json;
     }
 }

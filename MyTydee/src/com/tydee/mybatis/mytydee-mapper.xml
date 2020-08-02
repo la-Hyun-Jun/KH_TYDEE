@@ -13,7 +13,7 @@
 	<select id="selectListTypeD" parameterType="int" resultType="MyTydeeDto">
 		SELECT LEVEL "LEV", TINY_NO, TINY_TITLE
 		FROM MYTYDEE 
-		WHERE USER_NO = 2
+		WHERE USER_NO = #{user_no}
 		AND TINY_TYPE='D'
 		START WITH TINY_NO IN (SELECT TINY_NO FROM MYTYDEE WHERE TINY_DEPTH = 0)
 		CONNECT BY PRIOR TINY_NO = TINY_DEPTH
@@ -44,6 +44,9 @@
 	<delete id="delete" parameterType="MyTydeeDto">
 		DELETE FROM MYTYDEE
 		WHERE TINY_NO = #{tiny_no}
+		<if test="TINY_DEPTH  = 'D'">
+			OR TINY_DEPTH = #{tiny_no}
+		</if>
 		AND USER_NO = #{user_no}
 	</delete>
 	<insert id="insert" parameterType="MyTydeeDto">

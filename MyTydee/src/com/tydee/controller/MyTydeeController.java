@@ -39,10 +39,8 @@ public class MyTydeeController extends HttpServlet {
 		if (command.equals("main")) {
 			String jsonobject = MyTydeeConvertToJson.convertJson(loginuser);
 			request.setAttribute("mytydeejson", jsonobject);
-			List<MyTydeeDto> options = dao.selectListTypeD(user_no);
-			request.setAttribute("options", options);
-			System.out.println(jsonobject);
-			System.out.println(options.get(0));
+			String options = MyTydeeConvertToJson.makeOptions(loginuser);
+			request.setAttribute("optionArray", options);
 			dispatch("mytydee.jsp",request,response);
 		} else if (command.equals("update")) {
 			int tiny_no = Integer.parseInt(request.getParameter("tiny_no"));
