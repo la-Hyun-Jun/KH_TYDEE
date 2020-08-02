@@ -75,6 +75,14 @@ public class MyTydeeController extends HttpServlet {
 			} else {
 				response.sendRedirect("mytydee.do?command=main");
 			}
+		} else if (command.equals("insertNew")) {
+			int tydeenumber = Integer.parseInt(request.getParameter("tydeenumber"));
+			int res = dao.insertNew(user_no, tydeenumber);
+			if (res > 0) {
+				response.sendRedirect("mytydee.do?command=main");
+			} else {
+				response.sendRedirect("mytydee.do?command=main");
+			}
 		}
 	}
 	protected void dispatch(String url, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

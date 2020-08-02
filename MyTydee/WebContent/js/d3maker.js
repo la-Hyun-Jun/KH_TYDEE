@@ -171,8 +171,8 @@ let add = document.getElementById("addarea");
 
 document.addEventListener("DOMContentLoaded", () => {
 	let tiny_no;
-	let name = document.getElementsByClassName("tiny__content")[0];
-	let content = document.getElementsByClassName("tiny__content")[2];
+	let name = document.getElementsByClassName("tiny__content")[1];
+	let content = document.getElementsByClassName("tiny__content")[3];
 	edit.addEventListener("click", () => {
 		if (edit.innerHTML.indexOf("fa-edit") != -1){
 			edit.innerHTML = "<i class='fas fa-undo-alt'></i>";
@@ -360,7 +360,10 @@ document.addEventListener("DOMContentLoaded", () => {
 		tiny_depth.setAttribute("class", "pop__content");
 		tiny_depth.setAttribute("name","tiny_depth");
 		tiny_depth.required = true;
-    
+		let user = document.createElement("option");
+		user.setAttribute("value", 0);
+		user.textContent = "USER";
+		tiny_depth.appendChild(user);
 		options.forEach((data) => {
 			let option = document.createElement("option");
 			option.setAttribute("value", data.tiny_no);

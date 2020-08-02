@@ -1,7 +1,10 @@
 package com.tydee.dao;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 
 import com.tydee.dto.MyTydeeDistinctDto;
@@ -97,5 +100,32 @@ public class MyTydeeDao extends SqlMapConfig {
 			session.close();
 		}
 		return res;
+	}
+	public int insertNew(int user_no, int tydeenumber) {
+		SqlSession session = null;
+		int res = 0;
+		try {
+			session = getSqlSessionFactory().openSession(false);
+			for (int i=0; i<tydeenumber; i++) {
+				HashMap<String,Object> values = new HashMap<String, Object>();
+				String tydee = randomTydee();
+				values.put("user_no", user_no);
+				values.put("tiny_title", tydee);
+				values.put("tiny_content", tydee);
+				res += session.insert(namespace+"insertNew", values);
+				if (res > 0) {
+					session.commit();
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return res;
+	}
+	public String randomTydee() {
+		String[] tydee = {"거실", "방", "부엌", "베란다", "화장실", "다용도실", "테라스", "서재"};
+		return tydee[(int) Math.floor(Math.random()*7)];
 	}
 }
