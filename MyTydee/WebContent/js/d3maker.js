@@ -77,6 +77,8 @@ const newSlice = slice.enter()
 })
 .on("mouseover", d => {
 	d3.select("[name=tiny_no]").attr("value", d.data.tiny_no);
+	d3.select("[name=tiny_type]").attr("value", d.data.tiny_type);
+
 	d3.select("[name=type]").attr("value", (d.data.tiny_type == 'D')?"TYDEE":((d.data.tiny_type == 'N')?"TINY":"USER"));
 	d3.select("[name=name]").attr("value", d.data.name);
 	d3.select("[name=location]").attr("value", `${d.ancestors().map(d => d.data.name).reverse().join("/")}`);
@@ -172,8 +174,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	let name = document.getElementsByClassName("tiny__content")[0];
 	let content = document.getElementsByClassName("tiny__content")[2];
 	edit.addEventListener("click", () => {
-		console.log(name.value+":"+content.value);
-		console.log(name.defaultValue+":"+content.defaultValue);
 		if (edit.innerHTML.indexOf("fa-edit") != -1){
 			edit.innerHTML = "<i class='fas fa-undo-alt'></i>";
 			del.innerHTML = "<i class='fas fa-check'></i>";
@@ -188,6 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			content.setAttribute("readonly", "readonly");
 			newSlice.on("mouseover", d => {
 				d3.select("[name=tiny_no]").attr("value", d.data.tiny_no);
+				d3.select("[name=tiny_type]").attr("value", d.data.tiny_type);
 				d3.select("[name=type]").attr("value", (d.data.tiny_type == 'D')?"TYDEE":((d.data.tiny_type == 'N')?"TINY":"USER"));
 				d3.select("[name=name]").attr("value", d.data.name);
 				d3.select("[name=location]").attr("value", `${d.ancestors().map(d => d.data.name).reverse().join("/")}`);
@@ -200,12 +201,14 @@ document.addEventListener("DOMContentLoaded", () => {
 	}, false);
 	del.addEventListener("click",() =>{
 		tiny_no = document.getElementsByName("tiny_no")[0].value;
+		let tiny_type = document.getElementsByName("tiny_type")[0].value;
+		let confirmtype = (tiny_type == 'D')?'TYDEE':((tiny_type == 'N')?"TINY":"USER");
 		let form = document.getElementById("tiny-form");
 		let input = document.createElement("input");
 		input.setAttribute("type", "hidden");
 		input.setAttribute("name", "command");
 		if (del.innerHTML.indexOf("fa-trash-alt") != -1){
-			let check = confirm("삭제할 tiny 이름 : "+name.value+"\n삭제하시겠습니까?");
+			let check = confirm("삭제할 "+ confirmtype + " 이름 : "+name.value+"\n삭제하시겠습니까?");
 			if (check) {
 				input.setAttribute("value", "delete");
 				form.append(input);
@@ -292,6 +295,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		form.appendChild(command);
 
 		let typediv = document.createElement("div");
+		typediv.setAttribute("class","pop__content_box")
 
 		let typeD = document.createElement("input");
 		typeD.setAttribute("class", "pop__content");
@@ -320,30 +324,56 @@ document.addEventListener("DOMContentLoaded", () => {
 		typediv.appendChild(typeN);
 		typediv.appendChild(labelN);
 		contents.appendChild(typediv);
+		let titlediv = document.createElement("div");
+		titlediv.setAttribute("class","pop__content_box")
 
 		let title = document.createElement("input");
 		title.setAttribute("class", "pop__content");
 		title.setAttribute("type", "text");
 		title.setAttribute("name", "tiny_title");
 		title.required = true;
+		titlediv.appendChild(title);
+		
+		let contentdiv = document.createElement("div");
+		contentdiv.setAttribute("class","pop__content_box")
+		
 		let content = document.createElement("textarea");
 		content.setAttribute("class", "pop__content");
 		content.setAttribute("type", "text");
 		content.setAttribute("name", "tiny_content");
 		content.setAttribute("style", "resize:none;")
+		contentdiv.appendChild(content);
+		
+		let imagediv = document.createElement("div");
+		imagediv.setAttribute("class","pop__content_box")
+		
 		let image = document.createElement("input");
 		image.setAttribute("class", "pop__content");
 		image.setAttribute("type", "file");
 		image.setAttribute("name", "tiny_image");
+		imagediv.appendChild(image);
+		
+		let depthdiv = document.createElement("div");
+		depthdiv.setAttribute("class","pop__content_box")
+		
 		let tiny_depth = document.createElement("select");
 		tiny_depth.setAttribute("class", "pop__content");
 		tiny_depth.setAttribute("name","tiny_depth");
 		tiny_depth.required = true;
-
-		contents.appendChild(title);
-		contents.appendChild(content);
-		contents.appendChild(image);
-		contents.appendChild(tiny_depth);
+    
+		options.forEach((data) => {
+			let option = document.createElement("option");
+			option.setAttribute("value", data.tiny_no);
+			option.textContent = data.tiny_title;
+			tiny_depth.appendChild(option);
+		});
+		depthdiv.appendChild(tiny_depth);
+		
+		contents.appendChild(titlediv);
+		contents.appendChild(contentdiv);
+		contents.appendChild(imagediv);
+		contents.appendChild(depthdiv);
+    
 		form.appendChild(contents);
 		addlayer.appendChild(form);
 
