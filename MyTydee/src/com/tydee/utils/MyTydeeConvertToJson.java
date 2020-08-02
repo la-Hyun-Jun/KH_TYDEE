@@ -26,9 +26,6 @@ public class MyTydeeConvertToJson {
 
         for (MyTydeeDistinctDto level : levels) {
             List<MyTydeeDto> levelList = mtdao.selectListLevDepth(level);
-            // System.out.println("접속한 유저의 고유번호: "+level.getUser_no());
-            // System.out.println(level.getLev()+":"+level.getTiny_depth()+"에 해당하는 tiny의
-            // 갯수:"+levelList.size());
             List<Map<String, Object>> itemList = new ArrayList<Map<String, Object>>();
             for (MyTydeeDto tiny : levelList) {
                 // System.out.println(tiny.getTiny_title());
@@ -56,6 +53,7 @@ public class MyTydeeConvertToJson {
         Map<String, Object> item = new HashMap<String, Object>();
         item.put("tiny_no", dto.getTiny_no());
         item.put("name", dto.getTiny_title());
+        item.put("tiny_type", dto.getTiny_type());
         item.put("tiy_depth", dto.getTiny_depth());
         item.put("tiny_content", dto.getTiny_content());
         item.put("tiny_image", dto.getTiny_image());

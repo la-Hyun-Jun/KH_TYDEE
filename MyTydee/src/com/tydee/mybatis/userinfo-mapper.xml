@@ -3,7 +3,7 @@
 <mapper namespace="userinfo-mapper">
 	<select id="login" parameterType="UserInfoDto" resultType="UserInfoDto">
 		SELECT USER_NO, USER_ID, USER_PW, USER_ROLE, USER_NICKNAME, 
-				USER_REGDATE, NAVER_TK, KAKAO_TK, GOOGLE_TK, USER_ACTIVE
+				USER_REGDATE, SNS_TYPE, SNS_ID, USER_ACTIVE
 		FROM USER_INFO
 		WHERE USER_ID = #{user_id}
 		AND USER_PW = #{user_pw}

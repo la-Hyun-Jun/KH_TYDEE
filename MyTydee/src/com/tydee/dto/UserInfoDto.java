@@ -9,9 +9,8 @@ public class UserInfoDto {
 	private String user_role;
 	private String user_nickname;
 	private Date user_regdate;
-	private String naver_tk;
-	private String kakao_tk;
-	private String google_tk;
+	private String sns_type;
+	private String sns_id;
 	private String user_active;
 	public UserInfoDto() {}
 	public UserInfoDto(String user_id, String user_pw) {
@@ -19,16 +18,15 @@ public class UserInfoDto {
 		this.user_pw = user_pw;
 	}
 	public UserInfoDto(int user_no, String user_id, String user_pw, String user_role, String user_nickname,
-			Date user_regdate, String naver_tk, String kakao_tk, String google_tk, String user_active) {
+			Date user_regdate, String sns_type, String sns_id, String user_active) {
 		this.user_no = user_no;
 		this.user_id = user_id;
 		this.user_pw = user_pw;
 		this.user_role = user_role;
 		this.user_nickname = user_nickname;
 		this.user_regdate = user_regdate;
-		this.naver_tk = naver_tk;
-		this.kakao_tk = kakao_tk;
-		this.google_tk = google_tk;
+		this.sns_type = sns_type;
+		this.sns_id = sns_id;
 		this.user_active = user_active;
 	}
 	public int getUser_no() {
@@ -67,23 +65,18 @@ public class UserInfoDto {
 	public void setUser_regdate(Date user_regdate) {
 		this.user_regdate = user_regdate;
 	}
-	public String getNaver_tk() {
-		return naver_tk;
+	
+	public String getSns_type() {
+		return sns_type;
 	}
-	public void setNaver_tk(String naver_tk) {
-		this.naver_tk = naver_tk;
+	public void setSns_type(String sns_type) {
+		this.sns_type = sns_type;
 	}
-	public String getKakao_tk() {
-		return kakao_tk;
+	public String getSns_id() {
+		return sns_id;
 	}
-	public void setKakao_tk(String kakao_tk) {
-		this.kakao_tk = kakao_tk;
-	}
-	public String getGoogle_tk() {
-		return google_tk;
-	}
-	public void setGoogle_tk(String google_tk) {
-		this.google_tk = google_tk;
+	public void setSns_id(String sns_id) {
+		this.sns_id = sns_id;
 	}
 	public String getUser_active() {
 		return user_active;

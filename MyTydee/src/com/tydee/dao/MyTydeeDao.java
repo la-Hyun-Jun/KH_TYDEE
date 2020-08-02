@@ -37,17 +37,65 @@ public class MyTydeeDao extends SqlMapConfig {
 		}
 		return list;
 	}
-	public MyTydeeDto selectOneNo(int tiny_no) {
+	public List<MyTydeeDto> selectListTypeD(int user_no) {
 		SqlSession session = null;
-		MyTydeeDto dto = null;
+		List<MyTydeeDto> list = null;
 		try {
 			session = getSqlSessionFactory().openSession(false);
-			dto = session.selectOne(namespace+"selectOneNo", tiny_no);
+			list = session.selectList(namespace+"selectListTypeD", user_no);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			session.close();
 		}
-		return dto;
+		return list;
+	}
+	public int update(MyTydeeDto dto) {
+		SqlSession session = null;
+		int res = 0;
+		try {
+			session = getSqlSessionFactory().openSession(false);
+			res = session.update(namespace+"update", dto);
+			if (res > 0) {
+				session.commit();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return res;
+	}
+	public int delete(MyTydeeDto dto) {
+		SqlSession session = null;
+		int res = 0;
+		try {
+			session = getSqlSessionFactory().openSession(false);
+			res = session.delete(namespace+"delete",dto);
+			if (res > 0) {
+				session.commit();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return res;
+	}
+	public int insert(MyTydeeDto dto) {
+		SqlSession session = null;
+		int res = 0;
+		try {
+			session = getSqlSessionFactory().openSession(false);
+			res = session.insert(namespace+"insert", dto);
+			if (res > 0) {
+				session.commit();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return res;
 	}
 }
