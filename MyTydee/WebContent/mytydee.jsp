@@ -64,6 +64,7 @@ if (loginuser == null) {
 					</article>
 					<article class="modal modal__right">
 						<input class="tiny__search" type="text" name="search" />
+						<input class="tiny__search" type="button" value="find" />
 						<form action="mytydee.do" method="post" id="tiny-form">
 							<div class="modal__wrap">
 								<div class="tiny__buttons-left">
@@ -115,6 +116,7 @@ if (loginuser == null) {
 
 
 	<script type="text/javascript" src="js/d3maker.js"></script>
+	<script type="text/javascript" src="js/mytydee.js"></script>
 </body>
 
 </html>
