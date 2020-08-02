@@ -10,39 +10,39 @@ response.setContentType("text/html; charset=UTF-8");
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!--google font-->
+<link
+	href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap"
+	rel="stylesheet" />
+<!--tydee__sign.css-->
+<link rel="stylesheet" href="tydee__sign.css" />
 </head>
-
-<style>
-table {
-	border: none;
-}
-</style>
 
 <body>
 
-
-	<h1>회원가입</h1>
-
 	<form action="login.do?command=signres" method="post">
 
-		<table border="1">
-			<tr>
-				<th>이메일</th>
-				<td><input type="text" name="myemail" required="required"/></td>
-			</tr>
-			<tr>
-				<th>비밀번호</th>
-				<td><input type="password" name="mypw" required="required" /></td>
-			</tr>
-			<tr>
-				<th>닉네임</th>
-				<td><input type="text" name="myname" required="required" /></td>
-			</tr>
-			<tr>
-				<td colspan="2" align="right"><input type="submit" value="가입" />
-				<input type="button" value="취소" onclick="location.href='login.jsp'" />
-			</tr>
-		</table>
+		<div id="tydee__login">
+			<div class="tydee__wrap">
+				<h1>SIGN</h1>
+				<div class="email">
+					<span>email</span> <input class="title__inner" type="text"
+						name="myemail" required="required" />
+				</div>
+				<div class="pw">
+					<span>pw</span> <input class="title__inner" type="text" name="mypw"
+						required="required" />
+				</div>
+				<div class="name">
+					<span>name</span> <input class="title__inner" type="text"
+						name="myname" required="required" />
+				</div>
+				<div class="input">
+					<input type="submit" value="sign" onclick="" /> <input
+						type="button" value="back" onclick="location.href='login.jsp'" />
+				</div>
+			</div>
+		</div>
 	</form>
 
 </body>

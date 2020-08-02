@@ -38,6 +38,7 @@ public class loginController extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
+		HttpSession session = request.getSession();
 
 		String command = request.getParameter("command");
 		System.out.println("[" + command + "]");
@@ -55,28 +56,35 @@ public class loginController extends HttpServlet {
 			int res = dao.insertUser(dto);
 
 			if (res > 0) {
-				response.sendRedirect("login.jsp");
+				response.sendRedirect("main.jsp");
 			} else {
 				response.sendRedirect("signform.jsp");
 			}
+			
 		} else if  (command.equals("login")) {
-			HttpSession session = request.getSession();
-
 			String myemail = request.getParameter("myemail");
 			String mypw = request.getParameter("mypw");
-
 			loginDto dto = dao.login(myemail, mypw);
-
 			if (dto != null) {
-				session.setAttribute("dto", dto);
+				session.setAttribute("loginuser", dto);
 				session.setMaxInactiveInterval(10 * 60);
 
 				if (dto.getSns_type().equals("naver")) {
-					response.sendRedirect("main.jsp");
+					request.setAttribute("loginuser", dto);
+					RequestDispatcher dispatch = 
+							request.getRequestDispatcher("main.jsp");
+					dispatch.forward(request, response);
 				} else if (dto.getSns_type().equals("0")) {
-					response.sendRedirect("main.jsp");
+					request.setAttribute("loginuser", dto);
+					RequestDispatcher dispatch = 
+							request.getRequestDispatcher("main.jsp");
+					dispatch.forward(request, response);
+					
 				}
 			}
+		} else if (command.equals("logout")) {
+			session.invalidate();
+			response.sendRedirect("main.jsp");
 		}
 	}
 }

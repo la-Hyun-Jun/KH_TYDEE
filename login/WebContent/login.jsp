@@ -12,41 +12,17 @@ response.setContentType("text/html; charset=UTF-8");
 <head>
 <meta charset="UTF-8">
 <title>login.jsp</title>
-<!-- 카카오 sdk -->
-<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <!--google font-->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <!--tydee__login.css-->
+    <link rel="stylesheet" href="tydee__login.css" />
 </head>
-
-
-<style>
-table {
-	border: none;
-}
-</style>
-
 <body>
-	<h1>로그인</h1>
 
-	<form action="login.do" method="post">
-		<input type="hidden" name="command" value="login" />
-		<table border="1">
-			<col width="100" />
-			<col width="100" />
-			<tr>
-				<th>ID💻</th>
-				<td><input type="text" name="myemail" /></td>
-			</tr>
-			<tr>
-				<th>PW</th>
-				<td><input type="text" name="mypw" /></td>
-			</tr>
-			<tr>
-				<td colspan="4" align="right"><input type="submit"
-					value="login" /> <input type="button" value="sign"
-					onclick="location.href='signform.jsp'" /></td>
-			</tr>
-		</table>
-	</form>
-
+	<!-- naver login -->
 	<%
 	String clientId = "GUk01Uphrk1SGaYQZnul";//애플리케이션 클라이언트 아이디값";
 	String redirectURI = URLEncoder.encode("http://localhost:8787/login/callback.jsp", "UTF-8");
@@ -58,9 +34,36 @@ table {
 	apiURL += "&state=" + state;
 	session.setAttribute("state", state);
 	%>
-	<div>
-		<a href="<%=apiURL%>"><img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></a>
-	</div>
+
+    <form action="login.do" method="post">
+      <input type="hidden" name="command" value="login" />
+      <div id="tydee__login">
+        <div class="tydee__wrap">
+          <h1>LOGIN</h1>
+          <div class="email">
+            <span>email</span>
+            <input class="title__inner" type="text" name="myemail" />
+          </div>
+          <div class="pw">
+            <span>pw</span>
+            <input class="title__inner" type="text" name="mypw" />
+          </div>
+          <div>
+            <a href="<%=apiURL%>"
+              ><img id="naver_id_login" height="40" src="img/naver__login.png"
+            /></a>
+          </div>
+          <div class="input">
+            <input
+              type="button"
+              value="sign"
+              onclick="location.href='signform.jsp'"
+            />
+            <input type="submit" value="login" onclick="" />
+          </div>
+        </div>
+      </div>
+    </form>
 	
 </body>
 </html>
