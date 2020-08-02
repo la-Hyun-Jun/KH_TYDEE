@@ -34,9 +34,8 @@
       </div>
       
 	<section class="modals">
-	
 		<c:forEach items="${list }" var="dto">
-     <a href="#">
+     <a href="toast.do?command=detail&seq=${dto.seq }">
           <div class="modal">
             <div class="modal__wrap">
               <img src="img/1.jpg" alt="" />

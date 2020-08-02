@@ -78,6 +78,7 @@ const newSlice = slice.enter()
 .on("mouseover", d => {
 	d3.select("[name=tiny_no]").attr("value", d.data.tiny_no);
 	d3.select("[name=tiny_type]").attr("value", d.data.tiny_type);
+
 	d3.select("[name=type]").attr("value", (d.data.tiny_type == 'D')?"TYDEE":((d.data.tiny_type == 'N')?"TINY":"USER"));
 	d3.select("[name=name]").attr("value", d.data.name);
 	d3.select("[name=location]").attr("value", `${d.ancestors().map(d => d.data.name).reverse().join("/")}`);
@@ -323,7 +324,6 @@ document.addEventListener("DOMContentLoaded", () => {
 		typediv.appendChild(typeN);
 		typediv.appendChild(labelN);
 		contents.appendChild(typediv);
-		
 		let titlediv = document.createElement("div");
 		titlediv.setAttribute("class","pop__content_box")
 
@@ -360,7 +360,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		tiny_depth.setAttribute("class", "pop__content");
 		tiny_depth.setAttribute("name","tiny_depth");
 		tiny_depth.required = true;
-
+    
 		options.forEach((data) => {
 			let option = document.createElement("option");
 			option.setAttribute("value", data.tiny_no);
@@ -373,6 +373,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		contents.appendChild(contentdiv);
 		contents.appendChild(imagediv);
 		contents.appendChild(depthdiv);
+    
 		form.appendChild(contents);
 		addlayer.appendChild(form);
 
