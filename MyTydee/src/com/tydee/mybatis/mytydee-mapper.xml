@@ -53,4 +53,8 @@
 		INSERT INTO MYTYDEE
 		VALUES(MYTYDEE_SEQ.NEXTVAL, #{user_no}, #{tiny_type}, #{tiny_title}, #{tiny_depth}, #{tiny_content}, #{tiny_image}, SYSDATE)
 	</insert>
+	<insert id="insertNew" parameterType="hashmap">
+		INSERT INTO MYTYDEE
+		VALUES(MYTYDEE_SEQ.NEXTVAL, #{user_no}, 'D', #{tiny_title}, 0, #{tiny_content}, null, SYSDATE)
+	</insert>
 </mapper>
