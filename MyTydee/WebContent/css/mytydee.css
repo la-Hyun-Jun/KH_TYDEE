@@ -241,3 +241,35 @@ a.btn-layerClose:hover {
   top: 45px;
   left: 190px;
 }
+input[readonly=readonly]{
+	background: white;
+	font-size: var(--font-small);
+	font-weight: var(--weight-regualr);
+}
+input[value=TYDEE] {
+	display: inline-block;
+	width: 80px;
+	font-weight: var(--weight-bold);
+	font-size: var(--font-samll);
+	color: white;
+	background: slateblue;
+	border-radius: 10px;
+}
+input[value=TINY] {
+	display: inline-block;
+	width: 80px;
+	font-weight: var(--weight-bold);
+	font-size: var(--font-samll);
+	color: black;
+	background: lightcoral;
+	border-radius: 10px;
+}
+input[value=USER] {
+	display: inline-block;
+	width: 80px;
+	font-weight: var(--weight-bold);
+	font-size: var(--font-samll);
+	color: black;
+	background: yellowgreen;
+	border-radius: 10px;
+}
